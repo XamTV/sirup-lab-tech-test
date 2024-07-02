@@ -37,14 +37,10 @@ function Book() {
 
     const fetchData = async () => {
       const chapterslist = await getListOfChapters();
-      if (
-        chapterslist &&
-        chapterslist.data.viewer &&
-        chapterslist.data.viewer.chapters
-      ) {
+      if (chapterslist.data.viewer.chapters) {
         setChapters(chapterslist.data.viewer.chapters.hits);
       } else {
-        console.log("Erreur lors de la récupération des données.");
+        console.info("Erreur lors de la récupération des données.");
       }
     };
 
@@ -53,11 +49,9 @@ function Book() {
 
   const handleChapterChange = (event) => {
     const selectedChapterId = event.target.value;
-    console.log("Selected chapter ID:", selectedChapterId);
     const selectedChapter = chapters.find(
       (chapter) => chapter.id.toString() === selectedChapterId
     );
-    console.log("Selected chapter:", selectedChapter);
     if (selectedChapter.valid) {
       navigate(`/chapter/${selectedChapter.id}`, {
         state: {

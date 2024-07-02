@@ -36,7 +36,7 @@ function BooksList() {
       if (booksList) {
         setBooksData(booksList.data.viewer.books.hits);
       } else {
-        console.log("Erreur lors de la récupération des données.");
+        console.info("Erreur lors de la récupération des données.");
       }
       setLoading(false);
     };
