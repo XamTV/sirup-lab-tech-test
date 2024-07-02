@@ -8,7 +8,11 @@ function Chapter() {
     <section className="ChapterComponent">
       <Link to="/">Retourner à la liste</Link>
       <h1>{chapterName}</h1>
-      <img src={chapterUrl} alt={chapterName} />
+      {chapterUrl !== null ? (
+        <img src={chapterUrl} alt={chapterName} />
+      ) : (
+        <p>L&apos;image n&apos;est pas disponible pour le moment</p>
+      )}
     </section>
   );
 }
