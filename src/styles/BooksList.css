@@ -1,6 +1,24 @@
 /* BooksList.css */
+.BookListFilter {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 
+  margin: auto;
+  select {
+    width: 10rem;
+  }
+  option {
+    width: 1;
+  }
+}
 .BooksListComponent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   font-family: Arial, sans-serif;
   h1 {
