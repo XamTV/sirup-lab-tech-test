@@ -8,35 +8,35 @@ function BooksList() {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  const getListOfBooks = async () => {
-    try {
-      const res = await axios.post(
-        "https://api-preprod.lelivrescolaire.fr/graph",
-        {
-          query:
-            "query{viewer{books{hits{id displayTitle url subjects{name}levels{name}valid}}}}",
-        },
-        {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-          },
-        }
-      );
-      return res.data;
-    } catch (err) {
-      console.error("Error:", err.response ? err.response.data : err.message);
-
-      return null;
-    }
-  };
-
   useEffect(() => {
+    const getListOfBooks = async () => {
+      try {
+        const res = await axios.post(
+          "https://api-preprod.lelivrescolaire.fr/graph",
+          {
+            query:
+              "query{viewer{books{hits{id displayTitle url subjects{name}levels{name}valid}}}}",
+          },
+          {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+            },
+          }
+        );
+        return res.data;
+      } catch (err) {
+        console.error("Error:", err.response ? err.response.data : err.message);
+
+        return null;
+      }
+    };
+
     const fetchData = async () => {
       const booksList = await getListOfBooks();
       if (booksList) {
         setBooksData(booksList.data.viewer.books.hits);
       } else {
-        console.log("Erreur lors de la récupération des données.");
+        console.info("Erreur lors de la récupération des données.");
       }
       setLoading(false);
     };
