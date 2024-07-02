@@ -64,7 +64,7 @@ function Book() {
 
   return (
     <section className="BookComponent">
-      <Link to="/list">Retourner à la liste</Link>
+      <Link to="/">Retourner à la liste</Link>
       <h1>{book.displayTitle}</h1>
       <img src={book.url} alt={book.displayTitle} />
       <h2>Selectionne ton chapitre</h2>
@@ -73,7 +73,7 @@ function Book() {
           <option value="" disabled>
             ---
           </option>
-          {chapters.map((chapter) => (
+          {chapters.flatMap((chapter) => (
             <option
               key={chapter.id}
               value={chapter.id}

@@ -1,6 +1,7 @@
 .BookComponent {
   display: flex;
   flex-direction: column;
+  align-items: center;
   h1 {
     text-align: center;
   }
@@ -15,5 +16,9 @@
     background-color: lightgray;
     padding: 0.5rem;
     border-radius: 5px;
+    font-weight: 600;
+  }
+  select {
+    width: 15rem;
   }
 }

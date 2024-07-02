@@ -81,18 +81,6 @@ function BooksList() {
     <>
       <section className="BookListFilter">
         <select
-          value={selectedSubject}
-          onChange={(e) => setSelectedSubject(e.target.value)}
-        >
-          <option value="">Tout les Sujets</option>
-          {subjects.map((subject) => (
-            <option key={subject} value={subject}>
-              {subject}
-            </option>
-          ))}
-        </select>
-
-        <select
           value={selectedLevel}
           onChange={(e) => setSelectedLevel(e.target.value)}
         >
@@ -100,6 +88,17 @@ function BooksList() {
           {levels.map((level) => (
             <option key={level} value={level}>
               {level}
+            </option>
+          ))}
+        </select>
+        <select
+          value={selectedSubject}
+          onChange={(e) => setSelectedSubject(e.target.value)}
+        >
+          <option value="">Tout les Sujets</option>
+          {subjects.map((subject) => (
+            <option key={subject} value={subject}>
+              {subject}
             </option>
           ))}
         </select>
@@ -117,7 +116,7 @@ function BooksList() {
                 <span>{book.displayTitle}</span>
               </li>
             ) : (
-              ""
+              false
             )
           )}
         </ul>
