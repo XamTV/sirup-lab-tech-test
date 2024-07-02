@@ -54,11 +54,11 @@ function BooksList() {
   if (loading) {
     return <p>Loading...</p>;
   }
-  const subjects = booksData?.map((book) =>
-    book.subjects?.map((subject) => subject.name)
-  );
-
-  console.log(subjects);
+  const subjects = [
+    ...new Set(
+      booksData.flatMap((book) => book.subjects.map((subject) => subject.name))
+    ),
+  ];
 
   const filteredBooks = booksData.filter((book) => {
     return selectedSubject
@@ -69,33 +69,34 @@ function BooksList() {
   return (
     <>
       <section className="BookListFilter">
-        <label>
-          Subject:
-          <select
-            value={selectedSubject}
-            onChange={(e) => setSelectedSubject(e.target.value)}
-          >
-            <option value="">All Subjects</option>
-            {subjects.map((subject) => (
-              <option key={subject} value={subject}>
-                {subject}
-              </option>
-            ))}
-          </select>
-        </label>
+        <select
+          value={selectedSubject}
+          onChange={(e) => setSelectedSubject(e.target.value)}
+        >
+          <option value="">All Subjects</option>
+          {subjects.map((subject) => (
+            <option key={subject} value={subject}>
+              {subject}
+            </option>
+          ))}
+        </select>
       </section>
       <section className="BooksListComponent">
         <h1> Liste des livres</h1>
         <ul>
-          {filteredBooks?.map((book) => (
-            <li
-              key={book.id}
-              className={book.valid ? "valid" : "invalid"}
-              onClick={() => handleBookClick(book)}
-            >
-              <span>{book.displayTitle}</span>
-            </li>
-          ))}
+          {filteredBooks.map((book) =>
+            book.displayTitle !== null ? (
+              <li
+                key={book.id}
+                className={book.valid ? "valid" : "invalid"}
+                onClick={() => handleBookClick(book)}
+              >
+                <span>{book.displayTitle}</span>
+              </li>
+            ) : (
+              ""
+            )
+          )}
         </ul>
       </section>
     </>
