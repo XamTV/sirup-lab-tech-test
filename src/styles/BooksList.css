@@ -1,0 +1,48 @@
+/* BooksList.css */
+
+.BooksListComponent {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  h1 {
+    text-align: center;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  select {
+    padding: 5px;
+    margin-left: 10px;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s, opacity 0.3s;
+    span {
+      margin-left: 10px;
+    }
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.BooksListComponent li.valid {
+  cursor: pointer;
+  :hover {
+    color: blue;
+  }
+}
+
+.BooksListComponent li.invalid {
+  background-color: grey;
+  opacity: 0.6;
+  cursor: default;
+}

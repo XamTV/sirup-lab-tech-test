@@ -1,0 +1,19 @@
+.BookComponent {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+  }
+  img {
+    margin: auto;
+    width: 500px;
+  }
+  a {
+    align-self: flex-start;
+    text-decoration: none;
+    color: black;
+    background-color: lightgray;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+}
