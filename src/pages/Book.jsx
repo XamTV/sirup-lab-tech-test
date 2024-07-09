@@ -64,16 +64,20 @@ function Book() {
 
   return (
     <section className="BookComponent">
-      <Link to="/list">Retourner à la liste</Link>
+      <Link to="/">Retourner à la liste</Link>
       <h1>{book.displayTitle}</h1>
-      <img src={book.url} alt={book.displayTitle} />
+      {book.url !== null ? (
+        <img src={book.url} alt={book.displayTitle} />
+      ) : (
+        <p>L&apos;image n&apos;est pas disponible pour le moment</p>
+      )}
       <h2>Selectionne ton chapitre</h2>
       {chapters.length > 0 ? (
         <select onChange={handleChapterChange} defaultValue="">
           <option value="" disabled>
             ---
           </option>
-          {chapters.map((chapter) => (
+          {chapters.flatMap((chapter) => (
             <option
               key={chapter.id}
               value={chapter.id}

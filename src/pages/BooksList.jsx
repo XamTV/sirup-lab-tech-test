@@ -7,6 +7,7 @@ function BooksList() {
   const [booksData, setBooksData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedLevel, setSelectedLevel] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,20 +61,41 @@ function BooksList() {
     ),
   ];
 
+  const levels = [
+    ...new Set(
+      booksData.flatMap((book) => book.levels.map((level) => level.name))
+    ),
+  ];
+
   const filteredBooks = booksData.filter((book) => {
-    return selectedSubject
+    const matchesSubject = selectedSubject
       ? book.subjects.some((subject) => subject.name === selectedSubject)
       : true;
+    const matchesLevel = selectedLevel
+      ? book.levels.some((level) => level.name === selectedLevel)
+      : true;
+    return matchesSubject && matchesLevel;
   });
 
   return (
     <>
       <section className="BookListFilter">
         <select
+          value={selectedLevel}
+          onChange={(e) => setSelectedLevel(e.target.value)}
+        >
+          <option value="">Tout les niveaux</option>
+          {levels.map((level) => (
+            <option key={level} value={level}>
+              {level}
+            </option>
+          ))}
+        </select>
+        <select
           value={selectedSubject}
           onChange={(e) => setSelectedSubject(e.target.value)}
         >
-          <option value="">All Subjects</option>
+          <option value="">Tout les Sujets</option>
           {subjects.map((subject) => (
             <option key={subject} value={subject}>
               {subject}
@@ -94,7 +116,7 @@ function BooksList() {
                 <span>{book.displayTitle}</span>
               </li>
             ) : (
-              ""
+              false
             )
           )}
         </ul>

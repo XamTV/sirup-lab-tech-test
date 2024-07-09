@@ -1,19 +1,35 @@
 .BookComponent {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: aliceblue;
+  width: 50vw;
+  min-height: 98vh;
+  margin: auto;
+  border-radius: 25px;
   h1 {
     text-align: center;
+    margin: 0 0 2rem 0;
+  }
+  h2 {
+    margin: 0.5rem;
   }
   img {
     margin: auto;
     width: 500px;
   }
   a {
-    align-self: flex-start;
+    align-self: center;
     text-decoration: none;
     color: black;
     background-color: lightgray;
     padding: 0.5rem;
+    margin: 0.5rem;
     border-radius: 5px;
+    font-weight: 600;
+  }
+  select {
+    width: 15rem;
+    margin: 0.5rem;
   }
 }
