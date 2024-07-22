@@ -1,10 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/Chapter.css";
 
 function Chapter() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { chapterName, chapterUrl, bookId } = location.state;
+  const { chapterName, chapterUrl } = location.state;
   return (
     <section className="ChapterComponent">
       <button onClick={() => navigate(-1)}>

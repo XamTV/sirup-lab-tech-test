@@ -3,6 +3,28 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/BooksList.css";
 
+const getListOfBooks = async () => {
+  try {
+    const res = await axios.post(
+      "https://api-preprod.lelivrescolaire.fr/graph",
+      {
+        query:
+          "query{viewer{books{hits{id displayTitle url subjects{name}levels{name}valid}}}}",
+      },
+      {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+      }
+    );
+    return res.data;
+  } catch (err) {
+    console.error("Error:", err.response ? err.response.data : err.message);
+
+    return null;
+  }
+};
+
 function BooksList() {
   const [booksData, setBooksData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,28 +33,6 @@ function BooksList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const getListOfBooks = async () => {
-      try {
-        const res = await axios.post(
-          "https://api-preprod.lelivrescolaire.fr/graph",
-          {
-            query:
-              "query{viewer{books{hits{id displayTitle url subjects{name}levels{name}valid}}}}",
-          },
-          {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-            },
-          }
-        );
-        return res.data;
-      } catch (err) {
-        console.error("Error:", err.response ? err.response.data : err.message);
-
-        return null;
-      }
-    };
-
     const fetchData = async () => {
       const booksList = await getListOfBooks();
       if (booksList) {
