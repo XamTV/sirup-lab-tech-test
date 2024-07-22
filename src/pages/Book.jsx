@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "../styles/Book.css";
 import { useEffect, useState } from "react";
@@ -64,7 +64,10 @@ function Book() {
 
   return (
     <section className="BookComponent">
-      <Link to="/">Retourner à la liste</Link>
+      <button onClick={() => navigate(-1)}>
+        {" "}
+        Retour à la page précédente{" "}
+      </button>
       <h1>{book.displayTitle}</h1>
       {book.url !== null ? (
         <img src={book.url} alt={book.displayTitle} />

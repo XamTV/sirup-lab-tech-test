@@ -1,12 +1,16 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../styles/Chapter.css";
 
 function Chapter() {
   const location = useLocation();
-  const { chapterName, chapterUrl } = location.state;
+  const navigate = useNavigate();
+  const { chapterName, chapterUrl, bookId } = location.state;
   return (
     <section className="ChapterComponent">
-      <Link to="/">Retourner à la liste</Link>
+      <button onClick={() => navigate(-1)}>
+        {" "}
+        Retour à la page précédente{" "}
+      </button>
       <h1>{chapterName}</h1>
       {chapterUrl !== null ? (
         <img src={chapterUrl} alt={chapterName} />

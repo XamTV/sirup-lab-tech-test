@@ -53,7 +53,7 @@ function BooksList() {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Chargement...</p>;
   }
   const subjects = [
     ...new Set(
