@@ -53,7 +53,7 @@ function Book() {
       (chapter) => chapter.id.toString() === selectedChapterId
     );
     if (selectedChapter.valid) {
-      navigate(`/chapter/${selectedChapter.id}`, {
+      navigate(`/book/${id}/chapter/${selectedChapter.id}`, {
         state: {
           chapterName: selectedChapter.title,
           chapterUrl: selectedChapter.url,

@@ -48,7 +48,7 @@ function BooksList() {
 
   const handleBookClick = (book) => {
     if (book.valid) {
-      navigate(`/list/${book.id}`, { state: { book } });
+      navigate(`/book/${book.id}`, { state: { book } });
     }
   };
 
