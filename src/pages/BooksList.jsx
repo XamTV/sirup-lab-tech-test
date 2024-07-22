@@ -95,7 +95,7 @@ function BooksList() {
           value={selectedSubject}
           onChange={(e) => setSelectedSubject(e.target.value)}
         >
-          <option value="">Tout les Sujets</option>
+          <option value="">Tous les Sujets</option>
           {subjects.map((subject) => (
             <option key={subject} value={subject}>
               {subject}
